@@ -3,9 +3,17 @@ import Header from "./components/common/Header";
 import Footer from "./components/common/Footer";
 import Home from "./pages/Home";
 import Admin from "./pages/Admin";
+import { useEffect } from "react";
+import axios from "axios";
+import { API_URL } from "./services/api";
 import "./App.css";
 
 function App() {
+    
+    useEffect(() => {
+        axios.get(`${API_URL}/ping`).catch(() => {});
+    }, []);
+
     return (
         <div className="flex flex-col h-[100dvh] justify-center overflow-hidden">
             <Header />
