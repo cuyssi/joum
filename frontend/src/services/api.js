@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "https://api.joum.anacas.dev";
+export const API_URL = "https://api.joum.anacas.dev";
 
 export const traducirPalabra = async (word) => {
     const response = await axios.post(
