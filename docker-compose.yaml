@@ -3,18 +3,31 @@ services:
   backend:
     build:
       context: ./backend
-    ports:
-      - "8001:8000"
+    # El puerto del backend (8000) NO necesita ser expuesto al host
+    # (es decir, no necesitas la línea 'ports:')
+    # porque solo el frontend (Nginx) va a comunicarse con él internamente
+    # a través de la red de Docker Compose.
+    # El frontend se comunicará con el backend en http://backend:8000
+    # dentro de la red Docker.
     env_file:
       - ./backend/.env
     volumes:
-      - ./backend:/app
+      - /data/coolify/applications/pgg4owow4o44g4c8okc84w88/backend:/app
     restart: always
     entrypoint: uvicorn main:app --host 0.0.0.0 --port 8000
+    container_name: backend-pgg4owow4o44g4c8okc84w88-15435386668
+    labels:
+      - coolify.version=4.0.0-beta.420.1
+      - coolify.applicationId-1
+      - coolify.type=application
+      - coolify.name=backend-pgg4owow4o44g4c8okc84w88-15435386668
 
   frontend:
     build:
       context: ./frontend
     ports:
-      - "3000:3000"
-    restart: always
+      # Mapea el puerto 80 del contenedor Nginx (frontend) al puerto 80 del host.
+      # Esto es crucial para que Coolify sepa qué puerto exponer al mundo exterior.
+      - "80:80"
+    # Asegúrate de que tu Nginx dentro del contenedor frontend
+    # esté configurado para hacer proxy_pass a http://backend:8000.
