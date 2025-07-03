@@ -1,29 +1,32 @@
-# Etapa 1: Construcción de la aplicación React + Vite
-FROM node:18-alpine as builder
+# Usa una imagen base de Node.js
+FROM node:18-alpine
 
+# Configura el directorio de trabajo
 WORKDIR /app
 
-# Copia los archivos de definición de dependencias primero para aprovechar la caché de Docker.
+# Copia los archivos de la aplicación
 COPY package*.json ./
 
-# Instala las dependencias del frontend
+# Instala las dependencias
 RUN npm install
 
-# Copia el resto del código fuente del frontend
+# Copia el resto de la aplicación
 COPY . .
 
-# Construye la aplicación (esto generará los archivos estáticos en '/app/dist' dentro de esta etapa)
+# Construye la aplicación para producción
 RUN npm run build
 
-# Etapa 2: Servir la aplicación estática usando Nginx
-FROM nginx:alpine
-
-# ¡IMPORTANTE! Copia los archivos estáticos construidos desde la etapa 'builder'
-COPY --from=builder /app/dist /usr/share/nginx/html
-
-# Copia tu configuración personalizada de Nginx
-COPY ./nginx.conf /etc/nginx/conf.d/default.conf
-
+# Expón el puerto en el que Nginx escuchará
 EXPOSE 80
 
+# Usa Nginx para servir la app en producción
+FROM nginx:alpine
+
+# Copia los archivos de la build de React a la carpeta de Nginx
+COPY --from=0 /app/dist /usr/share/nginx/html
+
+# Copia la configuración de Nginx (asegúrate de tener un archivo nginx.conf)
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# Inicia Nginx
 CMD ["nginx", "-g", "daemon off;"]
