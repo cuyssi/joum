@@ -4,10 +4,11 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-@app.get("/ping")
-def ping():
+@app.get("/")
+def root():
+    return {"message": "Hello from FastAPI!"}
     # return JSONResponse(content={"message": "pong"}) # Si JSONResponse está comentado, cambia a un diccionario plano
-    return {"message": "pong"}
+    # return {"message": "pong"}
 
 # app.add_middleware( # Comentar todo el bloque del middleware
 #     CORSMiddleware,
