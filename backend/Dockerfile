@@ -5,10 +5,7 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY ./main.py .
-COPY ./routers ./routers
-
-RUN ls -la /app   # Esto te dará una lista de los archivos en el contenedor
+COPY . .
 
 EXPOSE 8000
 
