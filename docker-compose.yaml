@@ -18,6 +18,7 @@ services:
       - coolify.applicationId=1
       - coolify.type=application
       - coolify.name=backend
+      - traefik.enable=true
 
   frontend:
     build:
@@ -32,3 +33,4 @@ services:
       - coolify.applicationId=1
       - coolify.type=application
       - coolify.name=frontend
+      - traefik.enable=true
