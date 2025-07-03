@@ -3,16 +3,12 @@ services:
   backend:
     build:
       context: ./backend
-    # Elimina completamente la sección 'ports' para el backend
-    # ports:
-    #   - "8001:8000" # Ya no es necesario
-
     env_file:
       - ./backend/.env
     volumes:
       - /data/coolify/applications/pgg4owow4o44g4c8okc84w88/backend:/app
     restart: always
-    # entrypoint: uvicorn main:app --host 0.0.0.0 --port 8000
+    entrypoint: uvicorn main:app --host 0.0.0.0 --port 8000
     container_name: backend-pgg4owow4o44g4c8okc84w88-15435386668
     labels:
       - coolify.version=4.0.0-beta.420.1
@@ -23,12 +19,14 @@ services:
   frontend:
     build:
       context: ./frontend
-    # Elimina completamente la sección 'ports' para el frontend.
-    # Coolify gestionará la exposición del puerto 80 de este contenedor
-    # internamente y lo enrutará a tu dominio.
-    # ports:
-    #   - "80:80" # Esto es lo que está causando el error 'port is already allocated'
+    volumes:
+      - ./frontend:/app
+    restart: always
+    entrypoint: npm run build && nginx -g 'daemon off;'
+    container_name: frontend-pgg4owow4o44g4c8okc84w88-15435386668
+    labels:
+      - coolify.version=4.0.0-beta.420.1
+      - coolify.applicationId=2
+      - coolify.type=application
+      - coolify.name=frontend-pgg4owow4o44g4c8okc84w88-15435386668
 
-    # Asegúrate de que tu Nginx dentro del contenedor frontend
-    # siga escuchando en el puerto 80 internamente.
-    # Y que haga proxy_pass a http://backend:8000
