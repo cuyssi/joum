@@ -25,7 +25,7 @@ services:
     ports:
       - "80:80"
     restart: always
-    entrypoint: npm run dev
+    # entrypoint: npm run dev  <-- ¡Elimina o comenta esta línea!
     container_name: frontend
     labels:
       - coolify.version=4.0.0-beta.420.1
