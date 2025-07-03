@@ -3,12 +3,10 @@ services:
   backend:
     build:
       context: ./backend
-    # El puerto del backend (8000) NO necesita ser expuesto al host
-    # (es decir, no necesitas la línea 'ports:')
-    # porque solo el frontend (Nginx) va a comunicarse con él internamente
-    # a través de la red de Docker Compose.
-    # El frontend se comunicará con el backend en http://backend:8000
-    # dentro de la red Docker.
+    # Elimina completamente la sección 'ports' para el backend
+    # ports:
+    #   - "8001:8000" # Ya no es necesario
+
     env_file:
       - ./backend/.env
     volumes:
@@ -25,9 +23,12 @@ services:
   frontend:
     build:
       context: ./frontend
-    ports:
-      # Mapea el puerto 80 del contenedor Nginx (frontend) al puerto 80 del host.
-      # Esto es crucial para que Coolify sepa qué puerto exponer al mundo exterior.
-      - "80:80"
+    # Elimina completamente la sección 'ports' para el frontend.
+    # Coolify gestionará la exposición del puerto 80 de este contenedor
+    # internamente y lo enrutará a tu dominio.
+    # ports:
+    #   - "80:80" # Esto es lo que está causando el error 'port is already allocated'
+
     # Asegúrate de que tu Nginx dentro del contenedor frontend
-    # esté configurado para hacer proxy_pass a http://backend:8000.
+    # siga escuchando en el puerto 80 internamente.
+    # Y que haga proxy_pass a http://backend:8000
