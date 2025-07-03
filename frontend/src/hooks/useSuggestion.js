@@ -37,7 +37,7 @@ export function useSuggestion() {
     const handleReview = async (sug, newStatus) => {
         try {
             await reviewSuggestion(sug, newStatus);
-            setSugerencias((prev) => prev.filter((s) => s.word !== sug.word));
+            setSugerencias((prev) => prev.filter((s) => s.translation !== sug.translation));
         } catch (err) {
             console.error("Error al revisar sugerencia:", err);
             setError("No se pudo actualizar el estado.");
