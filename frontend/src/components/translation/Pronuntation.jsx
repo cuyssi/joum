@@ -1,86 +1,31 @@
 import { useWordStore } from "../../stores/useWordStore";
-import { usePronunciationSuggestion } from "../../hooks/usePronunciationSuggestion";
 import { useDictionaryStore } from "../../stores/useDictionaryStore";
-import Button from "../common/Button";
-import Modal from "../common/Modal";
-import { useState } from "react";
+import PronunciationSuggestionModal from "../common/PronunciationSuggestionModal";
 
 const Pronunciation = () => {
     const { word, hasSearched } = useWordStore();
     const { pronunciation } = useDictionaryStore();
-    const { pronunciationInput, setPronunciationInput, submitted, isLoading, error, handleSuggest, resetSubmission } =
-        usePronunciationSuggestion(word, pronunciation);
-
-    const [isModalOpen, setIsModalOpen] = useState(false);
-
-    const closeModal = () => {
-        setIsModalOpen(false);
-        resetSubmission();
-    };
-
-    const renderSuggestionForm = () => (
-        <div className="flex items-center gap-2">
-            <input
-                id="input_Pronunciation"
-                type="text"
-                value={pronunciationInput}
-                onChange={(e) => setPronunciationInput(e.target.value)}
-                className="p-2 border border-gray-300 rounded-md w-[75%]"
-                placeholder="Escribe aquí..."
-            />
-            <Button
-                text={isLoading ? "Enviando..." : "Enviar"}
-                onClick={handleSuggest}
-                className="bg-blue-600 p-2 hover:bg-blue-900 transition duration-300 text-white w-[25%] rounded-md"
-                disabled={isLoading}
-            />
-            {error && <p className="text-red-500 mt-2">{error}</p>}
-        </div>
-    );
 
     return (
         <div className="min-h-[180px] flex flex-col justify-center items-start">
-            {pronunciation ? (
-                <div className="items-left w-full">
-                    <h2 className="mt-20 text-gray-500 text-s font-medium">En español sonaría parecido a:</h2>
-                    <p className="text-blue-600 text-2xl font-semibold mb-10">
-                        {pronunciation.charAt(0).toUpperCase() + pronunciation.slice(1)}
-                    </p>
-
-                    <Button
-                        text={
-                            <span>
-                                <span className="text-gray-500 font-medium">¿No te suena bien? </span>
-                                <span className="underline text-blue-700 font-semibold">Propón otra</span>
-                            </span>
-                        }
-                        onClick={() => setIsModalOpen(true)}
-                        className="w-full text-center text-sm text-blue-500"
-                    />
-                </div>
-            ) : hasSearched ? (
-                <div className="items-left w-full">
-                    <h2 className="mt-20 text-gray-500 text-s font-medium">En español sonaría parecido a:</h2>
-                    <p className="text-red-400 text-2xl font-semibold mb-10">No disponible aún</p>
-
-                    <Button
-                        onClick={() => setIsModalOpen(true)}
-                        className="text-sm w-full text-center underline font-semibold text-blue-700"
-                        text="¿Conoces cómo se pronuncia?"
-                    />
-                </div>
-            ) : null}
-
-            <Modal isOpen={isModalOpen} onClose={closeModal}>
-                {!submitted ? (
-                    <>
-                        <h2 className="mt-6 text-lg font-semibold text-gray-700 mb-4 ">Sugiérenos una pronunciación</h2>
-                        {renderSuggestionForm()}
-                    </>
-                ) : (
-                    <p className="text-blue-900 text-center font-medium">¡Gracias por tu sugerencia!</p>
+            <div className="items-left w-full">
+                {hasSearched && (
+                    <div>
+                        <h2 className="mt-20 text-gray-500 text-s font-medium">En español sonaría parecido a:</h2>
+                        <p
+                            className={`text-2xl font-semibold mb-10 ${
+                                pronunciation ? "text-blue-600" : "text-red-400"
+                            }`}
+                        >
+                            {pronunciation
+                                ? pronunciation.charAt(0).toUpperCase() + pronunciation.slice(1)
+                                : "No disponible aún"}
+                        </p>
+                    </div>
                 )}
-            </Modal>
+
+                {hasSearched && <PronunciationSuggestionModal word={word} pronunciation={pronunciation} />}
+            </div>
         </div>
     );
 };
