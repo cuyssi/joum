@@ -1,7 +1,7 @@
 import { useTranslation } from "../../hooks/useTranslation";
 import { useWordStore } from "../../stores/useWordStore";
 import { usePronunciationSuggestion } from "../../hooks/usePronunciationSuggestion";
-import { unlockSpeech } from "../stores/useAudioStore";
+import { unlockSpeech } from "../../stores/useAudioStore";
 import Button from "../common/Button";
 
 export default function TranslationResult() {
