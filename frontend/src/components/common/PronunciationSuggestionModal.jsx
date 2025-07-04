@@ -1,9 +1,11 @@
 import { usePronunciationSuggestion } from "../../hooks/usePronunciationSuggestion";
 import { useModal } from "../../hooks/useModal";
+import { useWordStore} from "../../stores/useWordStore"
 import Button from "../common/Button";
 import Modal from "../common/Modal";
 
 const PronunciationSuggestionModal = ({ word, pronunciation }) => {
+    const { hasSearched } = useWordStore();
     const { pronunciationInput, setPronunciationInput, submitted, isLoading, error, handleSuggest, resetSubmission } =
         usePronunciationSuggestion(word, pronunciation);
 
@@ -30,29 +32,55 @@ const PronunciationSuggestionModal = ({ word, pronunciation }) => {
     );
 
     return (
-        <>
-            <Button
-                text={
-                    <span>
-                        <span className="text-gray-500 font-medium">¿No te suena bien? </span>
-                        <span className="underline text-blue-700 font-semibold">Propón otra</span>
-                    </span>
-                }
-                onClick={() => open(true)}
-                className="w-full text-center text-sm text-blue-500"
-            />
+        <div className="min-h-[180px] flex flex-col justify-center items-start">
+            {pronunciation ? (
+                <div className="items-left w-full">
+                    <h2 className="mt-20 text-gray-500 text-s font-medium">En español sonaría parecido a:</h2>
+                    <p className="text-blue-600 text-2xl font-semibold mb-10">
+                        {pronunciation.charAt(0).toUpperCase() + pronunciation.slice(1)}
+                    </p>
+
+                    <Button
+                        text={
+                            <span>
+                                <span className="text-gray-500 font-medium">¿No te suena bien? </span>
+                                <span className="underline text-blue-700 font-semibold">Propón otra</span>
+                            </span>
+                        }
+                        onClick={() => open(true)}
+                        className="w-full text-center text-sm text-blue-500"
+                    />
+                </div>
+            ) : hasSearched ? (
+                <div className="items-left w-full">
+                    <h2 className="mt-20 text-gray-500 text-s font-medium">En español sonaría parecido a:</h2>
+                    <p className="text-red-400 text-2xl font-semibold mb-10">No disponible aún</p>
+
+                    <Button
+                        onClick={() => open(true)}
+                        className="text-sm w-full text-center  font-semibold text-blue-700"
+                        text={
+                            <span>
+                                <span className="text-gray-500 font-medium">¿Sabes cómo se pronuncia? </span>
+                                <span className="text-blue-700 underline font-semibold">Propón una</span>
+                            </span>
+                        }
+                    />
+                </div>
+            ) : null}
 
             <Modal isOpen={isOpen} onClose={close}>
                 {!submitted ? (
-                    <div>
+                    <>
                         <h2 className="mt-6 text-lg font-semibold text-gray-700 mb-4">Sugiérenos una pronunciación</h2>
                         {renderForm()}
-                    </div>
+                    </>
                 ) : (
                     <p className="text-blue-900 text-center font-medium">¡Gracias por tu sugerencia!</p>
                 )}
             </Modal>
-        </>
+            </div>
+        
     );
 };
 

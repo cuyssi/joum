@@ -8,6 +8,8 @@ export function usePronunciationSuggestion(word) {
 
     const handleSuggest = async () => {
         if (!pronunciationInput.trim()) return;
+        if (isLoading) return;
+        setSubmitted(false);
         await suggestWord(word, pronunciationInput);
         setPronunciationInput("");
         setSubmitted(true);
