@@ -1,6 +1,7 @@
 import { useTranslation } from "../../hooks/useTranslation";
 import { useWordStore } from "../../stores/useWordStore";
 import { usePronunciationSuggestion } from "../../hooks/usePronunciationSuggestion";
+import { unlockSpeech } from "../stores/useAudioStore";
 import Button from "../common/Button";
 
 export default function TranslationResult() {
@@ -9,12 +10,13 @@ export default function TranslationResult() {
     const { resetSubmission } = usePronunciationSuggestion(word);
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
+        e.preventDefault();        
         if (!word.trim()) return;
         const translated = await getTranslation(word);
         if (!translated) return;
         setHasSearched(true);
         resetSubmission();
+        unlockSpeech();
     };
 
     return (
