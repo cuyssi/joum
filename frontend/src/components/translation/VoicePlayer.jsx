@@ -25,7 +25,7 @@ const VoicePlayer = () => {
             <Button
                 onClick={speak}
                 text={<HiOutlineSpeakerWave />}
-                className="bg-gray-200 text-blue-900 border-gray-200 text-3xl active:scale-90 px-4 py-4 rounded-full hover:bg-blue-600 transition-all duration-300 mt-10 mx-auto"
+                className="flex-1 mt-5 bg-gray-200 text-blue-900 border-gray-200 text-4xl active:scale-90 px-4 py-4 rounded-full hover:bg-blue-600 transition-all duration-300 mx-auto"
             />
             <AudioControls />
         </div>
