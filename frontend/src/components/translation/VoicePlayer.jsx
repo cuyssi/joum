@@ -21,7 +21,7 @@ const VoicePlayer = () => {
     if (!translation) return null;
 
     return (
-        <div className="mt-8 flex flex-row items-center justify-center border px-4 pb-4 border-blue-200 rounded-xl gap-10 w-[90%] max-w-sm mx-auto mb-4">
+        <div className="mt-8 flex flex-row items-center justify-center border px-4 pb-4 border-blue-200 rounded-xl gap-10 w-[100%] max-w-sm mx-auto mb-4">
             <Button
                 onClick={speak}
                 text={<HiOutlineSpeakerWave />}

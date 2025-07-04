@@ -5,7 +5,7 @@ export default function useAdminAuth() {
         return localStorage.getItem("admin-auth") === "ok";
     });
     const login = (password) => {
-        if (password === "flyrulesñ9999!") {
+        if (password === "admin123") {
             localStorage.setItem("admin-auth", "ok");
             setIsAuth(true);
             return true;

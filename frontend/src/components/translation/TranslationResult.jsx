@@ -22,7 +22,7 @@ export default function TranslationResult() {
     return (
         <div className="min-h-[180px] flex flex-col justify-center items-center">
             <h2 className="mt-15 text-3xl font-semibold text-blue-900 mb-6">¿Qué quieres traducir?</h2>
-            <div className="flex gap-2">
+            <div className="w-full flex gap-2">
                 <input
                     type="text"
                     value={word}
@@ -40,7 +40,7 @@ export default function TranslationResult() {
 
             {translation && (
                 <div className="mt-15 text-left w-[100%]">
-                    <p className="text-gray-500 font-medium">Traducción:</p>
+                    <p className="text-gray-500 font-medium w-full">Traducción:</p>
                     <p className="text-blue-600 text-2xl font-semibold">
                         {translation.charAt(0).toUpperCase() + translation.slice(1)}
                     </p>

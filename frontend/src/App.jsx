@@ -6,23 +6,20 @@ import Admin from "./pages/Admin";
 import clsx from "clsx";
 import "./App.css";
 
-function App() {
+function App() { 
+
     return (
-        <div className="flex justify-center sm:items-center bg-gray-100 min-h-[100dvh]">
-            <div
-                className={clsx(
-                    "w-full bg-white flex flex-col",
-  "sm:max-w-[420px] sm:mx-auto sm:rounded-xl sm:shadow-md sm:overflow-hidden"
-                )}
-            >
+        <div className="flex flex-col sm:flex-row w-[100%] h-[100dvh] sm:items-center sm:justify-center sm:bg-gray-400">
+            <div className={clsx("w-full h-full bg-white flex flex-col",
+        "sm:w-[360px] sm:h-[auto] sm:rounded-xl sm:shadow-md sm:overflow-hidden")}>
                 <Header />
-                <main className="flex justify-center items-center">
+                <main className="flex flex-1 bg-white justify-center items-center">
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/admin" element={<Admin />} />
                     </Routes>
                 </main>
-                <Footer />
+                <Footer />                
             </div>
         </div>
     );
