@@ -16,7 +16,7 @@ export default function Home() {
         <section className="flex justify-center items-center min-h-[600px]">
             <Form
                 onSubmit={handleSubmit}
-                className="flex justify-center w-full max-w-md p-6 bg-white h-[600px] flex-col"
+                className="flex w-full max-w-md p-6 bg-white h-[600px] flex-col"
             />
         </section>
     );

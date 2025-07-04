@@ -21,7 +21,7 @@ export default function TranslationResult() {
 
     return (
         <div className="min-h-[180px] flex flex-col justify-center items-center">
-            <h2 className="mt-15 text-3xl font-semibold text-blue-900 mb-6">¿Qué quieres traducir?</h2>
+            <h2 className="mt-30 text-3xl font-semibold text-blue-900 mb-6">¿Qué quieres traducir?</h2>
             <div className="w-full flex gap-2">
                 <input
                     type="text"
