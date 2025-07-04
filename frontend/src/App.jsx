@@ -3,27 +3,22 @@ import Header from "./components/common/Header";
 import Footer from "./components/common/Footer";
 import Home from "./pages/Home";
 import Admin from "./pages/Admin";
-import { useEffect } from "react";
-import axios from "axios";
-import { API_URL } from "./services/api";
 import "./App.css";
 
-function App() {
-    
-    useEffect(() => {
-        axios.get(`${API_URL}/ping`).catch(() => {});
-    }, []);
+function App() {    
 
     return (
-        <div className="flex flex-col h-[100dvh] justify-center overflow-hidden">
-            <Header />
-            <main className="flex-1 bg-white justify-center items-center flex">
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/admin" element={<Admin />} />
-                </Routes>
-            </main>
-            <Footer />
+        <div className="flex justify-center bg-gray-100 min-h-[100dvh]">
+            <div className="flex flex-col h-full w-full max-w-[420px] bg-white shadow-md">
+                <Header />
+                <main className="flex-1 justify-center items-center flex">
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/admin" element={<Admin />} />
+                    </Routes>
+                </main>
+                <Footer />
+            </div>
         </div>
     );
 }
