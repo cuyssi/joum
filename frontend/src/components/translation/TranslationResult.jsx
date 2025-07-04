@@ -34,7 +34,7 @@ export default function TranslationResult() {
                 <Button
                     text="Traducir"
                     onClick={handleSubmit}
-                    className="w-[30%] bg-blue-600 text-white font-medium py-2 rounded-md hover:bg-blue-900 transition duration-300"
+                    className="w-[30%] bg-blue-500 text-white font-medium py-2 rounded-md hover:bg-blue-900 transition duration-300"
                 />
             </div>
 

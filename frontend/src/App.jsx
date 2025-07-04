@@ -3,15 +3,20 @@ import Header from "./components/common/Header";
 import Footer from "./components/common/Footer";
 import Home from "./pages/Home";
 import Admin from "./pages/Admin";
+import clsx from "clsx";
 import "./App.css";
 
-function App() {    
-
+function App() {
     return (
-        <div className="flex justify-center bg-gray-100 min-h-[100dvh]">
-            <div className="flex flex-col h-full w-full max-w-[420px] bg-white shadow-md">
+        <div className="flex justify-center sm:items-center bg-gray-100 min-h-[100dvh]">
+            <div
+                className={clsx(
+                    "w-full bg-white flex flex-col",
+  "sm:max-w-[420px] sm:mx-auto sm:rounded-xl sm:shadow-md sm:overflow-hidden"
+                )}
+            >
                 <Header />
-                <main className="flex-1 justify-center items-center flex">
+                <main className="flex justify-center items-center">
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/admin" element={<Admin />} />
