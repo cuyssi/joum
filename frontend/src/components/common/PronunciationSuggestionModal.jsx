@@ -1,3 +1,31 @@
+// ------------------------------------------------------------------------------
+// components/translation/PronunciationSuggestionModal.jsx//
+// Este componente muestra la pronunciación sugerida de una palabra y permite
+// al usuario proponer una alternativa si no le convence o si no hay ninguna.
+//
+// Funcionalidades:
+// - Muestra la pronunciación actual si existe
+// - Permite abrir un modal para sugerir una nueva pronunciación
+// - Usa `usePronunciationSuggestion` para gestionar el input y el envío
+// - Usa `useModal` para controlar la visibilidad del modal
+//
+// Hooks utilizados:
+// - usePronunciationSuggestion(word): gestiona el input, envío y estado
+// - useModal(resetSubmission): controla el modal y reinicia el estado al cerrar
+// - useWordStore(): verifica si se ha hecho una búsqueda (`hasSearched`)
+//
+// Componentes utilizados:
+// - <Button />: botón reutilizable
+// - <Modal />: ventana modal con fondo desenfocado
+//
+// Casos contemplados:
+// - Si hay pronunciación: se muestra y se ofrece opción de sugerir otra
+// - Si no hay pronunciación pero sí búsqueda: se invita a sugerir una
+// - Si no hay búsqueda: no se muestra nada
+//
+// Author: Ana Castro
+// ------------------------------------------------------------------------------
+
 import { usePronunciationSuggestion } from "../../hooks/usePronunciationSuggestion";
 import { useModal } from "../../hooks/useModal";
 import { useWordStore} from "../../stores/useWordStore"

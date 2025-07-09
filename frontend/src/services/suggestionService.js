@@ -1,3 +1,13 @@
+// ------------------------------------------------------------------------------
+// services/suggestionService.js - Funciones para gestionar sugerencias
+// Este módulo contiene funciones que interactúan con el backend para:
+// - Obtener todas las sugerencias pendientes de revisión (GET /admin/sugerencias)
+// - Enviar una nueva sugerencia desde el frontend (PUT /admin/revisar)
+// - Aprobar o rechazar una sugerencia desde el panel de administración (POST /sugerencias/sugerir)
+//
+// Author: Ana Castro
+// ------------------------------------------------------------------------------
+
 import { API_URL } from "./api";
 
 export const fetchSuggestions = async () => {

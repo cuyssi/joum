@@ -1,3 +1,29 @@
+// ------------------------------------------------------------------------------
+// components/translation/VoicePlayer.jsx - Reproductor de voz para traducciones//
+// Este componente permite reproducir en voz alta la traducción obtenida,
+// utilizando la API de síntesis de voz del navegador (`SpeechSynthesis`).
+// También incluye controles para ajustar la velocidad y el volumen.
+//
+// Funcionalidades:
+// - Reproduce la traducción en inglés británico (`en-GB`)
+// - Permite ajustar `rate` (velocidad) y `volume` (volumen) desde el store
+// - Muestra un botón de reproducción con icono y controles deslizantes
+//
+// Hooks utilizados:
+// - useTranslationStore(): obtiene la traducción actual
+// - useAudioStore(): obtiene y gestiona `rate` y `volume`
+//
+// Componentes utilizados:
+// - <Button />: botón de reproducción con icono de altavoz
+// - <AudioControls />: controles deslizantes para velocidad y volumen
+//
+// Notas:
+// - Si no hay traducción disponible, el componente no se renderiza
+// - Se cancela cualquier reproducción anterior antes de iniciar una nueva
+//
+// Author: Ana Castro
+// ------------------------------------------------------------------------------
+
 import Button from "../common/Button";
 import AudioControls from "./AudioControls";
 import { useTranslationStore } from "../../stores/useTranslationStore";

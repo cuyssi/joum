@@ -1,3 +1,17 @@
+// ------------------------------------------------------------------------------
+// components/common/Modal.jsx - Componente modal reutilizable//
+// Este componente representa una ventana modal genérica. Se muestra centrada
+// en pantalla con fondo semitransparente y desenfoque. Puede cerrarse haciendo
+// clic fuera del contenido o en el icono de cierre.
+//
+// Props:
+// - isOpen (boolean): controla si el modal está visible
+// - onClose (function): función que se ejecuta al cerrar el modal
+// - children (ReactNode): contenido que se renderiza dentro del modal 
+//
+// Author: Ana Castro
+// ------------------------------------------------------------------------------
+
 import { MdClose } from "react-icons/md";
 
 const Modal = ({ isOpen, onClose, children }) => {

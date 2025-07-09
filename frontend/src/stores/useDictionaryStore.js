@@ -1,3 +1,18 @@
+// ------------------------------------------------------------------------------
+// store/useDictionaryStore.js - Estado global para pronunciaciones en Joum
+//
+// Este store de Zustand gestiona la lógica de consulta al diccionario de
+// pronunciaciones. Se conecta con la API para obtener la pronunciación de una
+// palabra ya registrada en la base de datos.
+//
+// Estado expuesto:
+// - pronunciation: resultado de la búsqueda
+// - error: mensaje de error si la búsqueda falla 
+// - clear(): reinicia el estado de pronunciación y error
+//
+// Author: Ana Castro
+// ------------------------------------------------------------------------------
+
 import { create } from "zustand";
 import { buscarPalabra } from "../services/api";
 

@@ -1,3 +1,24 @@
+// ------------------------------------------------------------------------------
+// components/admin/AdminPanel.jsx - Panel de revisión de sugerencias
+// Este componente muestra una lista de sugerencias pendientes para que el
+// administrador pueda revisarlas. Permite aprobar o rechazar cada sugerencia
+// con botones de acción.
+//
+// Funcionalidades:
+// - Obtiene las sugerencias desde el hook `useSuggestion`
+// - Muestra cada sugerencia con su traducción y pronunciación propuesta
+// - Permite aprobar o rechazar con botones que llaman a `handleReview`
+//
+// Componentes utilizados:
+// - <Button />: botón reutilizable con estilos personalizados
+//
+// Estilos:
+// - Scroll vertical con clase `custom-scroll`
+// - Colores y bordes adaptados a la identidad visual de Joum
+//
+// Author: Ana Castro
+// ------------------------------------------------------------------------------
+
 import { useSuggestion } from "../../hooks/useSuggestion";
 import Button from "../common/Button";
 

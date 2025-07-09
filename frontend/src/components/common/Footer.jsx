@@ -1,3 +1,11 @@
+// ------------------------------------------------------------------------------
+// components/common/Footer.jsx - Pie de página//
+// Este componente representa el footer global de la aplicación. Muestra el año,
+// el nombre del proyecto y los créditos de autoría con enlaces a redes sociales.//
+// 
+// Author: Ana Castro
+// ------------------------------------------------------------------------------
+
 const Footer = () => {
     return (
         <footer className="flex justify-between px-5 py-5 text-white items-center text-xs h-[6dvh] sm:h-[5dvh] bg-blue-500">

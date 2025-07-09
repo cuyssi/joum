@@ -1,3 +1,21 @@
+// ------------------------------------------------------------------------------
+// components/translation/TranslationResult.jsx - Entrada y resultado de traducción//
+// Este componente permite al usuario introducir una palabra, obtener su traducción
+// y visualizar el resultado. También reinicia el estado de sugerencias y desbloquea
+// el audio tras una búsqueda exitosa./
+// 
+// Hooks utilizados:
+// - useWordStore(): gestiona la palabra, el estado de búsqueda y su actualización
+// - useTranslation(): obtiene la traducción desde la base de datos
+// - usePronunciationSuggestion(): reinicia el estado de sugerencia tras traducir
+// - useAudioStore(): desbloquea el audio tras una búsqueda válida
+//
+// Componentes utilizados:
+// - <Button />: botón reutilizable con estilos personalizados
+//
+// Author: Ana Castro
+// ------------------------------------------------------------------------------
+
 import { useTranslation } from "../../hooks/useTranslation";
 import { useWordStore } from "../../stores/useWordStore";
 import { usePronunciationSuggestion } from "../../hooks/usePronunciationSuggestion";

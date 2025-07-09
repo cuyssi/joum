@@ -1,3 +1,17 @@
+// ------------------------------------------------------------------------------
+// App.jsx - Componente principal de la interfaz de Joum
+//
+// Este componente define la estructura general de la aplicación:
+// - Aplica un layout responsivo centrado con Tailwind CSS
+// - Incluye el <Header />, <Footer /> y el <main> con las rutas principales
+// - Usa react-router-dom para definir las vistas: Home y Admin
+// - Utiliza clsx para componer clases condicionales de forma limpia,
+//   adaptando la vista para escritorio en un diseño mobile-first.
+//
+// Author: Ana Castro
+// ------------------------------------------------------------------------------
+
+
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/common/Header";
 import Footer from "./components/common/Footer";

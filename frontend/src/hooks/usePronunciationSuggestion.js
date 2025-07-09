@@ -1,3 +1,20 @@
+// ------------------------------------------------------------------------------
+// hooks/usePronunciationSuggestion.js - Hook para sugerir pronunciaciones//
+// Este hook encapsula el flujo de sugerencia de pronunciación para una palabra
+// específica. Se apoya en `useSuggestion` para enviar los datos al backend,
+// y gestiona el estado del input y la confirmación de envío.
+//
+// Funcionalidades:
+// - pronunciationInput: estado del campo de texto
+// - submitted: indica si la sugerencia fue enviada con éxito
+// - handleSuggest(): valida y envía la sugerencia
+// - resetSubmission(): reinicia el estado de confirmación
+//
+// Dependencias:
+// - useSuggestion(): lógica de red y manejo de errores
+//
+// Author: Ana Castro
+// ------------------------------------------------------------------------------
 import { useState } from "react";
 import { useSuggestion } from "./useSuggestion";
 

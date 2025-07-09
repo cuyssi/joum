@@ -1,3 +1,19 @@
+// ------------------------------------------------------------------------------
+// components/common/AudioControls.jsx - Controles de audio para reproducción//
+// Este componente permite al usuario ajustar la velocidad (`rate`) y el volumen
+// (`volume`) del audio de pronunciación. Se conecta al store global `useAudioStore`.
+//
+// Funcionalidades:
+// - Control deslizante para la velocidad de reproducción (de 0.1x a 1.5x)
+// - Control deslizante para el volumen (de 0 a 1)
+// - Iconos visuales que representan extremos de cada rango
+//
+// Hooks utilizados:
+// - useAudioStore(): obtiene y actualiza `rate` y `volume` globalmente
+//
+// Author: Ana Castro
+// ------------------------------------------------------------------------------
+
 import { useAudioStore } from "../../stores/useAudioStore";
 import { HiOutlineSpeakerWave } from "react-icons/hi2";
 import { RxSpeakerModerate } from "react-icons/rx";

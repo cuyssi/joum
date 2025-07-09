@@ -1,6 +1,25 @@
+// ------------------------------------------------------------------------------
+// hooks/useSuggestion.js - Hook personalizado para gestionar sugerencias//
+// Este hook encapsula la lógica relacionada con las sugerencias de palabra.
+// 
+// Funcionalidades:
+// - fetchSuggestions(): se ejecuta al montar el hook y carga las sugerencias
+// - suggestWord(): envía una nueva sugerencia con estado "pendiente"
+// - handleReview(): actualiza el estado de una sugerencia y la elimina del listado
+//
+// Utilidades:
+// - cleanWord(): normaliza la palabra antes de enviarla
+//
+// Estado expuesto:
+// - sugerencias: array de sugerencias pendientes
+// - error: mensaje de error si ocurre algún fallo en la red
+//
+// Author: Ana Castro
+// ------------------------------------------------------------------------------
+
 import { useState, useEffect } from "react";
 import { createSuggestion, fetchSuggestions, reviewSuggestion } from "../services/suggestionService";
-import { quitarAcentos } from "../utils/textHelpers";
+import { cleanWord } from "../utils/textHelpers";
 
 export function useSuggestion() {
     const [sugerencias, setSugerencias] = useState([]);    
@@ -19,7 +38,7 @@ export function useSuggestion() {
         try {            
             setError(null);
             await createSuggestion({
-                translation: quitarAcentos(word),
+                translation: cleanWord(word),
                 suggested_pronunciation: suggestedPronunciation,
                 status: "pendiente",
                 fecha: new Date().toISOString(),

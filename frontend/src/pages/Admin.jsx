@@ -1,3 +1,25 @@
+// ------------------------------------------------------------------------------
+// pages/Admin.jsx - Vista del panel de administración en Joum//
+// Este componente representa la interfaz protegida para el administrador.
+// Incluye un formulario de autenticación por contraseña y, si es válida,
+// muestra el panel de revisión de sugerencias.
+
+// Funcionalidades:
+// - Autenticación local mediante hook personalizado (useAdminAuth)
+// - Renderizado condicional del formulario o del <AdminPanel />
+// - Botón para cerrar sesión
+
+// Estado local:
+// - passwordInput: almacena la contraseña introducida
+// - error: mensaje de error si la contraseña es incorrecta
+
+// Componentes utilizados:
+// - <AdminPanel />: panel principal de revisión
+// - <Button />: botón reutilizable
+//
+// Author: Ana Castro
+// ------------------------------------------------------------------------------
+
 import { useState } from "react";
 import AdminPanel from "../components/admin/AdminPanel";
 import Button from "../components/common/Button";
@@ -8,7 +30,7 @@ export default function Admin() {
     const [passwordInput, setPasswordInput] = useState("");
     const [password] = useState("");
     const [error, setError] = useState("");
-    
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const success = login(password);

@@ -1,3 +1,15 @@
+/* ------------------------------------------------------------------------------
+   styles.css - Estilos globales para el frontend de Joum
+
+   Este archivo define los estilos base de la aplicación, incluyendo:
+   - Importación de fuentes externas (Google Fonts)
+   - Integración con Tailwind CSS
+   - Estilos globales para el body
+   - Scroll personalizado oculto para elementos con la clase .custom-scroll
+
+   Author: Ana Castro
+------------------------------------------------------------------------------ */
+
 @import url("https://fonts.googleapis.com/css2?family=Courgette&display=swap");
 @import "tailwindcss";
 
