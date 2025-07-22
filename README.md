@@ -1,6 +1,6 @@
 # Joum — Traductor con pronunciación y sugerencias personalizadas
 
-**Joum** es una aplicación web construida con **FastAPI** y **Vite** que te permite traducir palabras del inglés, consultar su pronunciación adaptada al español y, si no te convence (o no existe esa entrada aún), enviar una sugerencia personalizada que será revisada por un administrador.
+**Joum** es una aplicación web construida con **FastAPI** y **Vite** que te permite traducir palabras al inglés, consultar su pronunciación adaptada al español y, si no te convence (o no existe esa entrada aún), enviar una sugerencia personalizada que será revisada por un administrador.
 
 Además, Joum es una **Progressive Web App (PWA)**, lo que significa que puedes instalarla como una app nativa en tu móvil directamente desde el navegador.
 
