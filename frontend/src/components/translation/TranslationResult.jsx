@@ -57,7 +57,7 @@ export default function TranslationResult() {
             </div>
 
             {translation && (
-                <div className="mt-15 text-left w-[100%]">
+                <div className="mt-10 text-left w-[100%]">
                     <p className="text-gray-500 font-medium w-full">Traducción:</p>
                     <p className="text-blue-600 text-2xl font-semibold">
                         {translation.charAt(0).toUpperCase() + translation.slice(1)}

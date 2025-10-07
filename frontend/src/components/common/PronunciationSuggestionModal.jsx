@@ -75,7 +75,10 @@ const PronunciationSuggestionModal = ({ word, pronunciation }) => {
                                 <span className="underline text-blue-700 font-semibold">Propón otra</span>
                             </span>
                         }
-                        onClick={() => open(true)}
+                        onClick={(e) => {
+                            e.preventDefault();
+                            open(true)
+                        }}
                         className="w-full text-center text-sm text-blue-500"
                     />
                 </div>
@@ -85,7 +88,11 @@ const PronunciationSuggestionModal = ({ word, pronunciation }) => {
                     <p className="text-red-400 text-2xl font-semibold mb-10">No disponible aún</p>
 
                     <Button
-                        onClick={() => open(true)}
+                        type="button"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            open(true)
+                        }}
                         className="text-sm w-full text-center  font-semibold text-blue-700"
                         text={
                             <span>

@@ -34,7 +34,8 @@ const VoicePlayer = () => {
     const { translation } = useTranslationStore();
     const { rate, volume } = useAudioStore();
 
-    const speak = () => {
+    const speak = (e) => {
+        e.preventDefault();
         if (!translation) return;
         const utterance = new SpeechSynthesisUtterance(translation);
         utterance.lang = "en-GB";
@@ -49,6 +50,7 @@ const VoicePlayer = () => {
     return (
         <div className="mt-8 flex flex-row items-center justify-center border px-4 pb-4 border-blue-200 rounded-xl gap-10 w-[100%] max-w-sm mx-auto mb-4">
             <Button
+                type="button"
                 onClick={speak}
                 text={<HiOutlineSpeakerWave />}
                 className="flex-1 mt-5 bg-gray-200 text-blue-900 border-gray-200 text-4xl active:scale-90 px-4 py-4 rounded-full hover:bg-blue-600 transition-all duration-300 mx-auto"
